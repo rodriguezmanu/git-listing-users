@@ -1,0 +1,121 @@
+listing-git {
+
+    .refresh-button {
+        margin: 40px 0;
+        position: relative;
+        color: #535353;
+        justify-content: center;
+        border-radius: 10px;
+        border: 1px solid #8C8989;
+        background: #eeeeee;
+        background: -moz-linear-gradient(top, #eeeeee 53%, #eeeeee 53%, #eeeeee 56%, #cccccc 89%);
+        background: -webkit-linear-gradient(top, #eeeeee 53%,#eeeeee 53%,#eeeeee 56%,#cccccc 89%);
+        background: linear-gradient(to bottom, #eeeeee 53%,#eeeeee 53%,#eeeeee 56%,#cccccc 89%);
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: #d5d5d5;
+            z-index: -1;
+            border-radius:10px;
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: -7px;
+            left: -7px;
+            right: -7px;
+            bottom: -7px;
+            background: #FFFFFF;
+            z-index: -1;
+            border-radius: 10px;
+            border: 1px solid #686868;
+        }
+
+        i {
+            color: #858585;
+        }
+
+        span {
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+    }
+
+    li {
+        display: flex;
+        flex-wrap: wrap;
+        border: solid 1px #CCCCCC;
+
+        .image-author {
+            display: flex;
+            padding: 10px;
+            img {
+                width: 50px;
+                height: 50px;
+                align-self: center;
+                border-radius: 10px;
+            }
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            margin: 10px;
+            flex: 1;
+
+            .message {
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            .user-author {
+                display: flex;
+                .commit-author {
+                    font-weight: 400;
+                    color: #949494;
+                }
+                .commit-label,
+                .commit-date {
+                    margin-left: 5px;
+                }
+            }
+        }
+
+        .sha {
+            display: flex;
+            align-self: flex-end;
+            margin: 0 10px 12px;
+        }
+    }
+}
+
+// Mobile View
+@media screen and (max-width: 768px) {
+    listing-git {
+        ul {
+            padding: 0;
+
+            li {
+                flex-direction: column;
+                .main-container {
+                    overflow: hidden;
+                    flex: auto;
+                }
+
+                .image-author {
+                    justify-content: center;
+                }
+
+                .sha {
+                    align-self: flex-start;
+                }
+            }
+        }
+    }
+}

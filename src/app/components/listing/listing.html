@@ -1,0 +1,50 @@
+<div class="container">
+    <!-- Loading spinner -->
+    <div class="spinner text text-center" ng-if="vm.loading">
+        <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+        <span class="sr-only">Loading...</span>
+    </div>
+
+    <!-- Refresh Button -->
+    <div ng-if="!vm.loading">
+        <div class="button-container text-center">
+            <div class="refresh-button btn" ng-click="vm.getCommits()">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <span>Refresh</span>
+                <i class="fa fa-star" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <!-- Commit list -->
+        <ul>
+            <li ng-repeat="item in vm.commits | limitTo:25">
+                <!-- Image Author-->
+                <div class="image-author">
+                    <img ng-src="{{item.author.avatar_url}}" alt="">
+                </div>
+                <!-- Message, date and login user commiter -->
+                <div class="main-container">
+                    <div class="message">
+                        {{item.commit.message | limitTo:120}}...
+                    </div>
+                    <div class="user-author">
+                        <span class="commit-author">{{item.author.login}}</span>
+                        <span class="commit-label"> committed</span>
+                        <span class="commit-date">{{vm.setTimeCommit(item.commit.author.date)}}</span>
+                    </div>
+                </div>
+                <!-- Sha code -->
+                <div class="sha">
+                    <span>commit: </span>
+                    <span>{{item.sha | limitTo:15}}</span>
+                </div>
+            </li>
+        </ul>
+
+        <!-- No commit results -->
+        <div class="text-center" ng-if="vm.commits.length == 0">
+            <h1>No commit results, try again</h1>
+        </div>
+
+    </div>
+</div>
